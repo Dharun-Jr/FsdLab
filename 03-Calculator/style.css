@@ -1,204 +1,55 @@
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  color: #222222;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
 }
 
-.calc-wrapper {
-  background: #ffffff;
-  width: 100%;
-  max-width: 420px;
-  border: 1px solid #ccc;
+.calculator {
+    width: 300px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
-.calc-header {
-  background: #003366;
-  color: #ffffff;
-  padding: 14px;
-  text-align: center;
+#display {
+    width: 100%;
+    height: 65px;
+    margin-bottom: 15px;
+    padding: 10px;
+    text-align: right;
+    font-size: 28px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.calc-header h2 {
-  font-size: 1.2rem;
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
 }
 
-.calc-header p {
-  font-size: 0.85rem;
-  color: #cce0ff;
-  margin-top: 2px;
+button {
+    height: 55px;
+    font-size: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.calc-body {
-  padding: 16px;
+button:hover {
+    background: #eee;
 }
 
-.form-group {
-  margin-bottom: 12px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: bold;
-  margin-bottom: 4px;
-  color: #333333;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 6px 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  outline: none;
-}
-
-.form-group input:focus {
-  border-color: #003366;
-}
-
-.btn-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: 6px;
-}
-
-.op-btn {
-  background-color: #eeeeee;
-  border: 1px solid #999999;
-  color: #111111;
-  padding: 8px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.op-btn:hover {
-  background-color: #003366;
-  color: #ffffff;
-  border-color: #002244;
-}
-
-.btn-reset {
-  width: 100%;
-  background-color: #fce8e6;
-  color: #c5221f;
-  border: 1px solid #fad2cf;
-  padding: 6px;
-  font-weight: bold;
-  font-size: 0.85rem;
-  cursor: pointer;
-  margin-bottom: 14px;
-}
-
-.btn-reset:hover {
-  background-color: #f8c9c4;
-}
-
-.result-box {
-  background-color: #fafafa;
-  border: 1px solid #ccc;
-  padding: 12px;
-  text-align: center;
-  margin-bottom: 14px;
-}
-
-.result-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #666666;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 3px;
-}
-
-.result-value {
-  font-size: 1.15rem;
-  font-weight: bold;
-  color: #222222;
-  word-break: break-word;
-}
-
-.result-box.success {
-  background-color: #e6f4ea;
-  border-color: #ceead6;
-}
-
-.result-box.success .result-value {
-  color: #137333;
-}
-
-.result-box.error {
-  background-color: #fce8e6;
-  border-color: #fad2cf;
-}
-
-.result-box.error .result-value {
-  color: #c5221f;
-  font-size: 0.95rem;
-}
-
-.history-section {
-  border-top: 1px solid #ddd;
-  padding-top: 8px;
-}
-
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.history-header h3 {
-  font-size: 0.85rem;
-  color: #444444;
-}
-
-.btn-link {
-  background: none;
-  border: none;
-  color: #666666;
-  font-size: 0.75rem;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.btn-link:hover {
-  color: #c5221f;
-}
-
-.history-list {
-  list-style: none;
-  max-height: 110px;
-  overflow-y: auto;
-  font-size: 0.85rem;
-}
-
-.history-list li {
-  padding: 4px 6px;
-  background-color: #fafafa;
-  border: 1px solid #eee;
-  margin-bottom: 3px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.empty-history {
-  color: #888888;
-  font-style: italic;
-  text-align: center;
-  border: none !important;
-  background: none !important;
+.equal {
+    grid-column: span 2;
 }
