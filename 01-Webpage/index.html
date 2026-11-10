@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Simple Webpage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Department of Computer Science &amp; Engineering</h1>
+    <p>CS1510 Full Stack Development Laboratory</p>
+  </header>
+
+  <main class="main-container">
+    <section class="box">
+      <h2>Welcome to the Laboratory Portal</h2>
+      <p>This webpage demonstrates basic HTML5 semantic tags, CSS3 Flexbox layout centering, and client-side JavaScript.</p>
+      <div class="actions">
+        <a href="https://www.annauniv.edu" target="_blank" rel="noopener noreferrer" class="btn primary-btn">Visit College Website</a>
+        <button id="toggleThemeBtn" class="btn">Toggle Contrast</button>
+      </div>
+      <p id="liveDate" class="live-date"></p>
+    </section>
+
+    <section class="box">
+      <div class="exp-title-row">
+        <span>Experiment 01</span>
+        <h3>Design a Simple Responsive Webpage</h3>
+      </div>
+
+      <article class="doc-item">
+        <h4>Aim</h4>
+        <p>To design and develop a simple responsive webpage using HTML5 semantic elements, CSS3 Flexbox layout, and JavaScript for user interaction.</p>
+      </article>
+
+      <article class="doc-item">
+        <h4>Algorithm</h4>
+        <ol class="algo-list">
+          <li>Create the HTML5 document structure with viewport meta tag for responsive scaling.</li>
+          <li>Define semantic layout elements: header, main, section, article, and footer.</li>
+          <li>Use CSS Flexbox properties on the container (display: flex, justify-content: center, align-items: center).</li>
+          <li>Apply a light-blue page background and dark-blue header background.</li>
+          <li>Organize Aim, Algorithm, and Result content inside clean container blocks.</li>
+          <li>Add JavaScript to display the live date and provide a contrast toggle.</li>
+          <li>Provide an external college link and finish with a footer.</li>
+        </ol>
+      </article>
+
+      <article class="doc-item result-item">
+        <h4>Result</h4>
+        <p>The simple webpage has been successfully created and verified using HTML5, CSS3, and JavaScript.</p>
+        <div class="verify-row">
+          <span>Status: Verified</span>
+          <button id="showTimestampBtn" class="btn small-btn">Check Timestamp</button>
+        </div>
+        <div id="timestampDisplay" class="timestamp-box hidden"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Department of Computer Science &amp; Engineering | CS1510</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

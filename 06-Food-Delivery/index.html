@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Food Delivery Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="brand">
+        <h1>Campus Food Delivery</h1>
+        <p class="tagline">CS1510 Laboratory Experiment 06</p>
+      </div>
+      <div class="nav-actions">
+        <button id="viewHistoryBtn" class="btn-nav">My Orders</button>
+        <button id="cartBtn" class="btn-cart">
+          Cart (<span id="cartBadge">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-layout">
+    <!-- RESTAURANT LIST VIEW -->
+    <section id="restaurantsView" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2>Campus Restaurants</h2>
+          <p class="section-sub">Select a restaurant to view its menu items</p>
+        </div>
+        <input type="text" id="restaurantSearch" placeholder="Search restaurant or cuisine..." class="search-box">
+      </div>
+      <div id="restaurantsGrid" class="restaurants-grid"></div>
+    </section>
+
+    <!-- RESTAURANT MENU VIEW -->
+    <section id="menuView" class="view-section hidden">
+      <div class="menu-nav-bar">
+        <button id="backToRestaurantsBtn" class="btn-back">&larr; Back to Restaurants</button>
+      </div>
+      <!-- Restaurant Details Banner -->
+      <div id="restaurantBanner" class="restaurant-banner"></div>
+      
+      <div class="menu-controls">
+        <h3>Available Menu</h3>
+        <div class="veg-filter">
+          <label><input type="radio" name="dietFilter" value="all" checked> All Items</label>
+          <label><input type="radio" name="dietFilter" value="veg"> Vegetarian</label>
+          <label><input type="radio" name="dietFilter" value="non-veg"> Non-Vegetarian</label>
+        </div>
+      </div>
+      <div id="menuItemsGrid" class="menu-grid"></div>
+    </section>
+  </main>
+
+  <!-- CART SIDEBAR -->
+  <aside id="cartDrawer" class="cart-drawer hidden">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button id="closeCartBtn" class="close-btn">&times;</button>
+    </div>
+    <div id="cartItemsContainer" class="cart-items-body"></div>
+    <div class="cart-footer">
+      <div class="summary-line">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">Rs. 0.00</span>
+      </div>
+      <div class="summary-line">
+        <span>Delivery Fee:</span>
+        <span id="cartDeliveryFee">Rs. 30.00</span>
+      </div>
+      <div class="summary-line total-line">
+        <strong>Total Amount:</strong>
+        <strong id="cartGrandTotal">Rs. 0.00</strong>
+      </div>
+      <button id="checkoutBtn" class="btn-checkout" disabled>Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Delivery Information</h3>
+        <button id="closeCheckoutModalBtn" class="close-btn">&times;</button>
+      </div>
+      <form id="orderForm" class="checkout-form">
+        <div class="form-group">
+          <label for="custName">Customer Name:</label>
+          <input type="text" id="custName" placeholder="Enter full name" required>
+        </div>
+        <div class="form-group">
+          <label for="custAddress">Delivery Address / Hostel Room:</label>
+          <input type="text" id="custAddress" placeholder="e.g., Block B, Room 204" required>
+        </div>
+        <div class="form-group">
+          <label for="custPhone">Phone Number:</label>
+          <input type="tel" id="custPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentMode">Payment Method:</label>
+          <select id="paymentMode" required>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="UPI Payment">UPI Payment</option>
+            <option value="Card Payment">Card Payment</option>
+          </select>
+        </div>
+        <div class="order-pricing-summary">
+          Payable Total: <strong id="modalPayableAmount">Rs. 0.00</strong>
+        </div>
+        <button type="submit" class="btn-confirm-order">Confirm Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div id="successModal" class="modal-overlay hidden">
+    <div class="modal-card text-center">
+      <h3>Order Placed Successfully</h3>
+      <p class="order-id-label">Order Reference: <strong id="confirmedOrderId">#ORD-0000</strong></p>
+      <div class="order-details-box" id="confirmedOrderSummary"></div>
+      <p class="eta-text">Estimated Delivery Time: <strong>30 minutes</strong></p>
+      <button id="closeSuccessBtn" class="btn-confirm-order">Return to Menu</button>
+    </div>
+  </div>
+
+  <!-- ORDER HISTORY MODAL -->
+  <div id="historyModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Order History</h3>
+        <button id="closeHistoryModalBtn" class="close-btn">&times;</button>
+      </div>
+      <div id="historyListContainer" class="history-container"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

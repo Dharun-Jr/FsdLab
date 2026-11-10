@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Leave Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="modal-overlay">
+    <div class="auth-box">
+      <h2>Leave Management System</h2>
+      <p class="auth-sub">CS1510 Staff Leave Portal</p>
+
+      <div class="auth-tabs">
+        <button id="tabLogin" class="tab-btn active">Sign In</button>
+        <button id="tabRegister" class="tab-btn">Register</button>
+      </div>
+
+      <div id="authAlert" class="alert hidden"></div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="empIdInput">Employee ID / Username:</label>
+          <input type="text" id="empIdInput" placeholder="e.g., emp101" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="empPassInput">Password:</label>
+          <input type="password" id="empPassInput" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-width">Access Portal</button>
+        <div class="demo-box">
+          <span>Demo Account:</span>
+          <button type="button" class="demo-btn" data-u="emp101" data-p="123456">emp101</button>
+          <button type="button" class="demo-btn" data-u="emp102" data-p="123456">emp102</button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <label for="regEmpId">Choose Employee ID:</label>
+          <input type="text" id="regEmpId" placeholder="e.g., emp103" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="regName">Full Name:</label>
+          <input type="text" id="regName" placeholder="Dr. John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password:</label>
+          <input type="password" id="regPass" placeholder="Min 4 characters" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-width">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APPLICATION PORTAL -->
+  <div id="appPortal" class="portal-layout hidden">
+    <header class="navbar">
+      <div class="nav-content">
+        <div class="brand">
+          <h1>Staff Leave Portal</h1>
+          <p class="brand-sub">CS1510 Full Stack Lab</p>
+        </div>
+        <div class="user-info-bar">
+          <span>Employee: <strong id="displayEmpName">Employee</strong> (<span id="displayEmpId">ID</span>)</span>
+          <button id="logoutBtn" class="btn danger-btn small-btn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <!-- LEAVE QUOTA & BALANCE -->
+      <section class="quota-row">
+        <div class="quota-card">
+          <span class="quota-label">Casual Leave (CL)</span>
+          <div class="balance-number" id="casualBalance">12</div>
+          <span class="quota-meta">Quota: 12 Days</span>
+        </div>
+
+        <div class="quota-card">
+          <span class="quota-label">Medical Leave (ML)</span>
+          <div class="balance-number" id="medicalBalance">10</div>
+          <span class="quota-meta">Quota: 10 Days</span>
+        </div>
+
+        <div class="quota-card">
+          <span class="quota-label">Total Utilized</span>
+          <div class="balance-number" id="totalConsumed">0</div>
+          <span class="quota-meta" id="requestsCount">0 Applications</span>
+        </div>
+      </section>
+
+      <!-- LEAVE APPLICATION FORM -->
+      <section class="card">
+        <div class="card-title-row">
+          <h3>Apply for Leave</h3>
+          <span class="helper-text">Casual: 12 days | Medical: 10 days</span>
+        </div>
+
+        <div id="formAlert" class="alert hidden"></div>
+
+        <form id="leaveApplicationForm" class="leave-form">
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="leaveType">Leave Type:</label>
+              <select id="leaveType" required>
+                <option value="Casual Leave">Casual Leave</option>
+                <option value="Medical Leave">Medical Leave</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label for="startDate">Start Date:</label>
+              <input type="date" id="startDate" required>
+            </div>
+            <div class="form-group flex-1">
+              <label for="endDate">End Date:</label>
+              <input type="date" id="endDate" required>
+            </div>
+          </div>
+
+          <div class="duration-box">
+            <span>Calculated Duration:</span>
+            <strong id="durationDisplay">1 Day(s)</strong>
+          </div>
+
+          <div class="form-group">
+            <label for="leaveReason">Reason for Leave:</label>
+            <input type="text" id="leaveReason" placeholder="Enter purpose of leave" required>
+          </div>
+
+          <button type="submit" class="btn primary-btn" id="btnSubmitLeave">
+            Submit Application
+          </button>
+        </form>
+      </section>
+
+      <!-- LEAVE REQUESTS TABLE -->
+      <section class="card">
+        <div class="card-title-row">
+          <h3>Leave History</h3>
+          <span class="helper-text">Cancelled leaves are refunded to balance</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="leave-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Days</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="leaveRequestsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

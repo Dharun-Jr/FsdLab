@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Chat Module</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-wrapper">
+    <header class="chat-header">
+      <div>
+        <h2>CS1510 Chat Module</h2>
+        <span class="chat-sub">Campus Automated Assistant</span>
+      </div>
+      <button id="clearChatBtn" class="btn">Clear Chat</button>
+    </header>
+
+    <div class="chat-body" id="chatBody"></div>
+
+    <div class="quick-bar">
+      <span>Sample queries:</span>
+      <button class="chip" data-msg="hello">hello</button>
+      <button class="chip" data-msg="how are you">how are you</button>
+      <button class="chip" data-msg="bye">bye</button>
+      <button class="chip" data-msg="what is cs1510?">what is cs1510?</button>
+      <button class="chip" data-msg="what time is it?">what time is it?</button>
+    </div>
+
+    <footer class="chat-footer">
+      <form id="chatForm" onsubmit="return false;">
+        <input 
+          type="text" 
+          id="userInput" 
+          placeholder="Type a message (e.g., hello, how are you, bye)..." 
+          autocomplete="off" 
+          required 
+        />
+        <button type="submit" id="sendBtn" class="btn primary-btn">Send</button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

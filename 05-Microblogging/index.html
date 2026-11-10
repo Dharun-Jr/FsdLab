@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Microblogging Application</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- AUTH OVERLAY -->
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-card">
+      <h2>CS1510 Microblogging</h2>
+      <p class="auth-sub">Share posts, follow users, and comment</p>
+
+      <div class="auth-tabs">
+        <button id="authTabLogin" class="tab-btn active">Sign In</button>
+        <button id="authTabRegister" class="tab-btn">Register</button>
+      </div>
+
+      <div id="authAlert" class="alert hidden"></div>
+
+      <!-- Sign In Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginUser">Username:</label>
+          <input type="text" id="loginUser" placeholder="e.g., alice" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password:</label>
+          <input type="password" id="loginPass" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-width">Sign In</button>
+        <div class="quick-demo">
+          <span>Demo Users:</span>
+          <button type="button" class="demo-chip" data-user="alice" data-pass="123456">alice</button>
+          <button type="button" class="demo-chip" data-user="bob" data-pass="123456">bob</button>
+          <button type="button" class="demo-chip" data-user="charlie" data-pass="123456">charlie</button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <label for="regUser">Choose Username:</label>
+          <input type="text" id="regUser" placeholder="e.g., david" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="regBio">Bio / Headline:</label>
+          <input type="text" id="regBio" placeholder="Computer Science Student" required>
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password:</label>
+          <input type="password" id="regPass" placeholder="Min 4 characters" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn success-btn full-width">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APP CONTAINER -->
+  <div id="appContainer" class="app-layout">
+    <!-- Navbar -->
+    <header class="app-navbar">
+      <div class="nav-brand">
+        <h2>Microblogging Portal</h2>
+      </div>
+      <div class="nav-user-actions">
+        <span class="user-pill">
+          User: <strong id="navUsername">User</strong>
+        </span>
+        <button id="viewProfileBtn" class="btn outline-btn small-btn">My Profile</button>
+        <button id="logoutBtn" class="btn danger-btn small-btn">Logout</button>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <!-- Main Feed Column -->
+      <main class="feed-column">
+        <!-- Post Composer -->
+        <section class="card composer-card">
+          <textarea 
+            id="postContentInput" 
+            placeholder="Write your post here..." 
+            maxlength="280"
+            rows="3"
+          ></textarea>
+          <div class="composer-footer">
+            <span class="char-count" id="charCount">0 / 280</span>
+            <button id="publishPostBtn" class="btn primary-btn">Publish Post</button>
+          </div>
+        </section>
+
+        <!-- Feed Tabs -->
+        <div class="feed-tabs">
+          <button id="feedTabAll" class="feed-tab active">All Posts</button>
+          <button id="feedTabFollowing" class="feed-tab">Following</button>
+        </div>
+
+        <!-- Posts Feed -->
+        <section id="postsFeed" class="posts-stream">
+          <!-- Rendered dynamically -->
+        </section>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="sidebar-column">
+        <!-- Profile Summary -->
+        <section class="card user-summary-card">
+          <h3 id="summaryName">Student Name</h3>
+          <p class="summary-bio" id="summaryBio">Computer Science Student</p>
+          <div class="summary-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="summaryPostsCount">0</span>
+              <span class="stat-name">Posts</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="summaryFollowingCount">0</span>
+              <span class="stat-name">Following</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="summaryFollowersCount">0</span>
+              <span class="stat-name">Followers</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Users Directory -->
+        <section class="card follow-card">
+          <h3>Users Directory</h3>
+          <p class="follow-desc">Follow users to filter your feed</p>
+          <ul id="usersDirectoryList" class="users-list">
+            <!-- Rendered dynamically -->
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profileModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalProfileTitle">User Profile</h3>
+        <button id="closeProfileModalBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalProfileBody">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

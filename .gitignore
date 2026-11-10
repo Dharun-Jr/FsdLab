@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+.vscode/
+.idea/
+CS1510-Full-Stack-Lab/
+VIVA-GUIDE.md

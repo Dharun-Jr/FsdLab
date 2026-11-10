@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #222222;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.chat-wrapper {
+  width: 100%;
+  max-width: 600px;
+  height: 85vh;
+  max-height: 650px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  background-color: #003366;
+  color: #ffffff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h2 {
+  font-size: 1.15rem;
+}
+
+.chat-sub {
+  font-size: 0.8rem;
+  color: #cce0ff;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.user-row {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.bot-row {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.bubble {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+}
+
+.user-bubble {
+  background-color: #003366;
+  color: #ffffff;
+  border-color: #002244;
+}
+
+.bot-bubble {
+  background-color: #f5f5f5;
+  color: #222222;
+}
+
+.timestamp {
+  font-size: 0.7rem;
+  color: #666666;
+  margin-top: 3px;
+}
+
+.quick-bar {
+  padding: 6px 12px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.chip {
+  background: #ffffff;
+  border: 1px solid #bbb;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: #222;
+}
+
+.chip:hover {
+  background-color: #003366;
+  color: #ffffff;
+  border-color: #003366;
+}
+
+.chat-footer {
+  padding: 10px 12px;
+  background: #ffffff;
+}
+
+.chat-footer form {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.chat-footer input:focus {
+  border-color: #003366;
+}
+
+.btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid #999;
+  background: #eee;
+  color: #111;
+}
+
+.btn:hover {
+  background: #ddd;
+}
+
+.primary-btn {
+  background: #003366;
+  color: #ffffff;
+  border-color: #002244;
+}
+
+.primary-btn:hover {
+  background: #002244;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+  }
+  .chat-wrapper {
+    height: 100vh;
+    max-height: 100vh;
+    border: none;
+  }
+}

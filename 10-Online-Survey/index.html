@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Online Survey Application</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="brand">
+        <h1>Campus Survey System</h1>
+        <p class="brand-sub">CS1510 Course &amp; Lab Feedback</p>
+      </div>
+      <div class="nav-actions">
+        <button id="toggleAdminBtn" class="btn">
+          <span id="adminBtnText">Admin View</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- 1. SURVEY TAKING VIEW -->
+    <section id="surveyView" class="view-panel">
+      <div class="card intro-card">
+        <h2>Student Course Experience &amp; Lab Feedback</h2>
+        <p class="intro-desc">
+          Answer the 5 randomly selected questions below. All questions must be completed before submission.
+        </p>
+        <button id="regenerateQuestionsBtn" class="btn small-btn">
+          Re-shuffle 5 Questions
+        </button>
+      </div>
+
+      <div id="surveyAlert" class="alert hidden"></div>
+
+      <form id="surveyForm" class="survey-form">
+        <!-- Participant Identity Section -->
+        <div class="card">
+          <h3>Participant Information</h3>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="studentName">Full Name:</label>
+              <input type="text" id="studentName" placeholder="e.g., John Doe" required>
+            </div>
+            <div class="form-group flex-1">
+              <label for="studentReg">Registration Number:</label>
+              <input type="text" id="studentReg" placeholder="e.g., 21CS045" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Random Questions Container -->
+        <div id="questionsContainer" class="questions-container"></div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary-btn large-btn" id="submitSurveyBtn">
+            Submit Survey
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 2. SURVEY SUCCESS VIEW -->
+    <section id="successView" class="view-panel hidden">
+      <div class="card text-center">
+        <h2>Feedback Submitted Successfully</h2>
+        <p class="success-msg">Your response has been saved to localStorage.</p>
+        <div class="ref-box">
+          Submission ID: <strong id="responseRefId">#SRV-00000</strong>
+        </div>
+        <div class="success-buttons">
+          <button id="retakeSurveyBtn" class="btn primary-btn">Take Another Survey</button>
+          <button id="viewInAdminBtn" class="btn">Inspect in Admin View</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ADMIN VIEW -->
+    <section id="adminView" class="view-panel hidden">
+      <div class="admin-toolbar card">
+        <div>
+          <h2>Survey Admin View</h2>
+          <p class="admin-sub">Audit all recorded responses</p>
+        </div>
+        <div class="admin-actions">
+          <button id="clearResponsesBtn" class="btn danger-btn small-btn">Clear All</button>
+          <button id="backToSurveyBtn" class="btn small-btn">&larr; Back to Survey</button>
+        </div>
+      </div>
+
+      <div class="admin-metrics-row">
+        <div class="metric-box">
+          <span class="metric-num" id="totalSubmissionsCount">0</span>
+          <span class="metric-label">Total Submissions</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-num">5</span>
+          <span class="metric-label">Questions Per Survey</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-num" id="questionBankSize">12</span>
+          <span class="metric-label">Question Bank Total</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Recorded Submissions</h3>
+        <div id="submissionsList" class="submissions-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

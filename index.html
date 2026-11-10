@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Full Stack Development Laboratory</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222222;
+      line-height: 1.5;
+    }
+    header {
+      background: #003366;
+      color: #ffffff;
+      padding: 20px 14px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+    header p {
+      font-size: 0.9rem;
+      color: #cce0ff;
+    }
+    .container {
+      max-width: 950px;
+      margin: 20px auto;
+      padding: 0 14px;
+    }
+    .intro {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+    .intro h2 {
+      font-size: 1.15rem;
+      color: #003366;
+      margin-bottom: 4px;
+    }
+    .intro p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+      color: #222;
+      font-weight: bold;
+    }
+    tr:hover {
+      background-color: #fafafa;
+    }
+    a {
+      color: #003366;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #0055aa;
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 24px;
+      border-top: 1px solid #ccc;
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CS1510 - Full Stack Development Laboratory</h1>
+    <p>Department of Computer Science &amp; Engineering | Practical Laboratory Experiments</p>
+  </header>
+
+  <main class="container">
+    <div class="intro">
+      <h2>Index of Practical Experiments</h2>
+      <p>Click on any experiment title to launch its application. All 10 experiments are built using pure HTML5, CSS3, and JavaScript with localStorage persistence.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 70px;">Exp No</th>
+          <th>Experiment Name</th>
+          <th>Description &amp; Key Features</th>
+          <th style="width: 110px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>01</strong></td>
+          <td>Simple Webpage</td>
+          <td>Department portal with light-blue background, dark-blue header, Flexbox centering, Aim, Algorithm, and Result sections.</td>
+          <td><a href="01-Webpage/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>02</strong></td>
+          <td>Chat Module</td>
+          <td>Client-side chat interface with user and bot messages, predefined replies, fallback response, auto-scroll, and localStorage.</td>
+          <td><a href="02-Chat-Module/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>03</strong></td>
+          <td>Calculator</td>
+          <td>Two-operand arithmetic calculator (+, -, *, /) with input validation, zero-division error handling, and history log.</td>
+          <td><a href="03-Calculator/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>04</strong></td>
+          <td>Todo Management</td>
+          <td>User login/register demonstration with isolated user tasks, priority levels, complete/incomplete toggle, filters, and counters.</td>
+          <td><a href="04-Todo-Management/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>05</strong></td>
+          <td>Microblogging</td>
+          <td>User sign in, 280-char post creation, follow/unfollow users, public vs following feed, likes, comments, and profile view.</td>
+          <td><a href="05-Microblogging/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>06</strong></td>
+          <td>Food Delivery Website</td>
+          <td>Campus restaurants with full menus, vegetarian filter, cart drawer with quantity adjustments, checkout modal, and orders log.</td>
+          <td><a href="06-Food-Delivery/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>07</strong></td>
+          <td>Shopping Cart</td>
+          <td>User auth, multi-category product catalogue, separate cart view with item quantity modifiers, discount, tax, and invoice receipt.</td>
+          <td><a href="07-Shopping-Cart/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>08</strong></td>
+          <td>Leave Management System</td>
+          <td>Employee leave portal tracking Casual (12) and Medical (10) quotas, date range calculation, quota limits, and cancellation refunds.</td>
+          <td><a href="08-Leave-Management/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>09</strong></td>
+          <td>Project Management Dashboard</td>
+          <td>Task management with title, assignee, priority, due date, status updates (Pending, In Progress, Completed), search, and stats.</td>
+          <td><a href="09-Project-Dashboard/index.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><strong>10</strong></td>
+          <td>Online Survey Application</td>
+          <td>Question bank sampling exactly 5 random questions, full submission validation, localStorage storage, and admin review view.</td>
+          <td><a href="10-Online-Survey/index.html">Open</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>&copy; Department of Computer Science &amp; Engineering | CS1510 Lab Manual</p>
+  </footer>
+</body>
+</html>

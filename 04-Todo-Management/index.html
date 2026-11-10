@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Multi-User Todo Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- AUTH SECTION -->
+    <div id="authSection" class="box auth-box">
+      <header class="auth-header">
+        <h2>CS1510 Todo Application</h2>
+        <p>User Authentication &amp; Isolated Task Storage</p>
+      </header>
+
+      <div class="auth-tabs">
+        <button id="tabLogin" class="tab-btn active">Sign In</button>
+        <button id="tabRegister" class="tab-btn">Register</button>
+      </div>
+
+      <div id="authAlert" class="alert hidden"></div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginUsername">Username:</label>
+          <input type="text" id="loginUsername" placeholder="e.g., student1" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password:</label>
+          <input type="password" id="loginPassword" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-btn">Login</button>
+        <div class="demo-users">
+          <span>Demo Users:</span>
+          <button type="button" class="demo-btn" data-user="student1" data-pass="123456">student1</button>
+          <button type="button" class="demo-btn" data-user="student2" data-pass="123456">student2</button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <label for="regUsername">Choose Username:</label>
+          <input type="text" id="regUsername" placeholder="e.g., student3" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="regPassword">Choose Password:</label>
+          <input type="password" id="regPassword" placeholder="Min 4 characters" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-btn">Register</button>
+      </form>
+    </div>
+
+    <!-- MAIN TODO WORKSPACE -->
+    <div id="todoSection" class="box todo-box hidden">
+      <header class="workspace-header">
+        <div>
+          <h2>Todo Workspace</h2>
+          <p class="user-greeting">Logged in as: <strong id="currentUserDisplay"></strong></p>
+        </div>
+        <button id="logoutBtn" class="btn logout-btn">Logout</button>
+      </header>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-num" id="totalCount">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num" id="pendingCount">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num" id="completedCount">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+      </div>
+
+      <form id="addTaskForm" class="add-task-form">
+        <input 
+          type="text" 
+          id="taskTitleInput" 
+          placeholder="Enter a new task title..." 
+          required 
+          autocomplete="off"
+        >
+        <select id="taskPrioritySelect">
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+          <option value="Low">Low</option>
+        </select>
+        <button type="submit" class="btn primary-btn">Add Task</button>
+      </form>
+
+      <div class="filter-controls">
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        <button id="clearCompletedBtn" class="clear-action-btn">Clear Completed</button>
+      </div>
+
+      <ul id="taskList" class="task-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

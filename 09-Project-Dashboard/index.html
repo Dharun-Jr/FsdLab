@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS1510 - Project Management Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="modal-overlay">
+    <div class="auth-box">
+      <h2>Project Dashboard</h2>
+      <p class="auth-sub">CS1510 Task Tracking &amp; Status Management</p>
+
+      <div class="auth-tabs">
+        <button id="authTabLogin" class="tab-btn active">Sign In</button>
+        <button id="authTabRegister" class="tab-btn">Register</button>
+      </div>
+
+      <div id="authAlert" class="alert hidden"></div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginUser">Username:</label>
+          <input type="text" id="loginUser" placeholder="e.g., manager1" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password:</label>
+          <input type="password" id="loginPass" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-width">Sign In</button>
+        <div class="demo-box">
+          <span>Demo Account:</span>
+          <button type="button" class="demo-btn" data-u="manager1" data-p="123456">manager1</button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <label for="regUser">Choose Username:</label>
+          <input type="text" id="regUser" placeholder="e.g., admin1" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password:</label>
+          <input type="password" id="regPass" placeholder="Min 4 characters" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn primary-btn full-width">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN DASHBOARD -->
+  <div id="dashboardWrapper" class="dashboard-layout hidden">
+    <header class="navbar">
+      <div class="nav-content">
+        <div class="brand">
+          <h1>Project Management Dashboard</h1>
+          <p class="brand-sub">CS1510 Laboratory Experiment 09</p>
+        </div>
+        <div class="user-actions">
+          <span>User: <strong id="headerUser">User</strong></span>
+          <button id="openCreateModalBtn" class="btn primary-btn small-btn">+ New Task</button>
+          <button id="logoutBtn" class="btn small-btn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <!-- STATS METRICS ROW -->
+      <section class="stats-row">
+        <div class="stat-box">
+          <span class="stat-label">Total Tasks</span>
+          <span class="stat-val" id="statTotal">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Pending</span>
+          <span class="stat-val" id="statPending">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">In Progress</span>
+          <span class="stat-val" id="statInProgress">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Completed</span>
+          <span class="stat-val" id="statCompleted">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Completion Rate</span>
+          <span class="stat-val" id="statRate">0%</span>
+        </div>
+      </section>
+
+      <!-- CONTROLS & FILTER BAR -->
+      <section class="controls-card">
+        <div class="search-box-wrapper">
+          <input type="text" id="searchInput" placeholder="Search tasks by title, description or assignee..." class="search-input">
+        </div>
+        <div class="filters-row">
+          <div class="filter-item">
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter">
+              <option value="All">All</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label for="priorityFilter">Priority:</label>
+            <select id="priorityFilter">
+              <option value="All">All</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- TASKS CONTAINER -->
+      <section class="tasks-container">
+        <div class="tasks-header">
+          <h3>Task List</h3>
+          <span id="showingCount" class="count-tag">Showing 0 Tasks</span>
+        </div>
+        <div id="tasksGrid" class="tasks-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- CREATE / EDIT TASK MODAL -->
+  <div id="taskModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="taskModalTitle">Create Task</h3>
+        <button id="closeTaskModalBtn" class="close-btn">&times;</button>
+      </div>
+      <form id="taskForm" class="task-form">
+        <input type="hidden" id="editTaskId">
+        <div class="form-group">
+          <label for="taskTitle">Task Title:</label>
+          <input type="text" id="taskTitle" placeholder="Enter task title" required>
+        </div>
+        <div class="form-group">
+          <label for="taskDesc">Description:</label>
+          <textarea id="taskDesc" rows="3" placeholder="Enter task details" required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="taskAssignee">Assignee:</label>
+            <input type="text" id="taskAssignee" placeholder="e.g., Alice" required>
+          </div>
+          <div class="form-group flex-1">
+            <label for="taskPriority">Priority:</label>
+            <select id="taskPriority" required>
+              <option value="High">High</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="taskDueDate">Due Date:</label>
+            <input type="date" id="taskDueDate" required>
+          </div>
+          <div class="form-group flex-1">
+            <label for="taskStatus">Status:</label>
+            <select id="taskStatus" required>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn primary-btn full-width" id="saveTaskBtn">Save Task</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
